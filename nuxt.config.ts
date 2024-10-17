@@ -1,5 +1,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  srcDir: 'src'
+  srcDir: 'src',
+  modules: ['@nuxt/eslint'],
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
 })
