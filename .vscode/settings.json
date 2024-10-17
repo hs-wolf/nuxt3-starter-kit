@@ -58,5 +58,8 @@
     "pcss",
     "postcss"
   ],
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "i18n-ally.localesPaths": [
+    "src/lang"
+  ]
 }

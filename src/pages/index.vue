@@ -26,6 +26,11 @@ const switchLocalePath = useSwitchLocalePath()
           </NuxtLink>
         </div>
       </li>
+      <li>
+        <span>Image Optimization</span>
+        <NuxtImg src="/stock-cabin.jpg" sizes="sm:64px md:128px" />
+        <NuxtImg src="/stock-profile.jpg" preset="avatar" />
+      </li>
     </ul>
   </div>
 </template>

@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
   eslint: {
     config: {
@@ -49,6 +50,27 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
+    },
+  },
+  image: {
+    format: ['webp'],
+    screens: {
+      'xs': 320,
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      'xxl': 1536,
+      '2xl': 1536,
+    },
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          width: 50,
+          height: 50,
+        },
+      },
     },
   },
 })
