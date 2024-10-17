@@ -11,12 +11,13 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'Nuxt3 Starter Kit' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }],
     },
   },
   modules: [
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/i18n',
   ],
   eslint: {
     config: {
@@ -25,5 +26,29 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     viewer: false,
+  },
+  i18n: {
+    locales: [
+      {
+        name: 'English',
+        code: 'en',
+        language: 'en-US',
+        file: 'en.yaml',
+      },
+      {
+        name: 'Português',
+        code: 'pt',
+        language: 'pt-BR',
+        file: 'pt.yaml',
+      },
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'lang',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
   },
 })
