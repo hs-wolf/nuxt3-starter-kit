@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-1 flex-col overflow-scroll">
     <slot />
   </div>
 </template>

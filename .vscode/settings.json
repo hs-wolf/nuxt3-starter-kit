@@ -4,7 +4,10 @@
   // Spelling dictionary
   "cSpell.words": [
     "antfu",
-    "nuxt"
+    "bradlc",
+    "nuxt",
+    "nuxtjs",
+    "tailwindcss"
   ],
 
   // Disable the default formatter, use eslint instead
