@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@vee-validate/nuxt',
   ],
   eslint: {
     config: {
@@ -83,5 +84,8 @@ export default defineNuxtConfig({
         dir: 'src/assets/icons',
       },
     ],
+  },
+  veeValidate: {
+    autoImports: true,
   },
 })
