@@ -1,14 +1,16 @@
 <script setup lang="ts">
 const { locale: currentLocale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+
+const { x, y } = useMouse()
 </script>
 
 <template>
   <div class="flex flex-1 flex-col justify-center items-center gap-2 h-full">
     <h1 class="text-xl">
-      Installed Modules
+      Available Features
     </h1>
-    <ul class="list-disc text-neutral-400">
+    <ul class="list-disc w-96 text-neutral-400">
       <li>Nuxt Devtools</li>
       <li>Linting with Eslint and Antfu Eslint Config</li>
       <li>CSS framework with TailwindCSS and SASS</li>
@@ -28,7 +30,7 @@ const switchLocalePath = useSwitchLocalePath()
       </li>
       <li>
         <div class="flex flex-col gap-2">
-          <span>Image Optimization</span>
+          <span>Image optimization</span>
           <div class="flex items-start gap-2">
             <NuxtImg src="/stock-cabin.jpg" sizes="sm:64px md:128px" />
             <NuxtImg src="/stock-profile.jpg" preset="avatar" />
@@ -41,6 +43,13 @@ const switchLocalePath = useSwitchLocalePath()
           <Icon name="custom:locale" size="20px" />
           <Icon name="custom:sliders" size="20px" />
           <Icon name="custom:add-circle" size="20px" />
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-2">
+          <span>Utility composables with VueUse</span>
+          <span>X {{ x }}</span>
+          <span>Y {{ y }}</span>
         </div>
       </li>
     </ul>
