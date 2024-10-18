@@ -27,9 +27,21 @@ const switchLocalePath = useSwitchLocalePath()
         </div>
       </li>
       <li>
-        <span>Image Optimization</span>
-        <NuxtImg src="/stock-cabin.jpg" sizes="sm:64px md:128px" />
-        <NuxtImg src="/stock-profile.jpg" preset="avatar" />
+        <div class="flex flex-col gap-2">
+          <span>Image Optimization</span>
+          <div class="flex items-start gap-2">
+            <NuxtImg src="/stock-cabin.jpg" sizes="sm:64px md:128px" />
+            <NuxtImg src="/stock-profile.jpg" preset="avatar" />
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center gap-2">
+          <span>SVG icons solution</span>
+          <Icon name="custom:locale" size="20px" />
+          <Icon name="custom:sliders" size="20px" />
+          <Icon name="custom:add-circle" size="20px" />
+        </div>
       </li>
     </ul>
   </div>

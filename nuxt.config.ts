@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     '@nuxt/image',
+    '@nuxt/icon',
   ],
   eslint: {
     config: {
@@ -72,5 +73,13 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'custom',
+        dir: 'src/assets/icons',
+      },
+    ],
   },
 })
