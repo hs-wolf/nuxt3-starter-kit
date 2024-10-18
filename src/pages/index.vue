@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { useAlertsStore } from '~/stores'
+
 const { locale: currentLocale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
+const alertsStore = useAlertsStore()
+
 const { x, y } = useMouse()
+
+onMounted(() => {
+  alertsStore.handleWarning('Testing warning.')
+})
 </script>
 
 <template>
@@ -52,6 +60,7 @@ const { x, y } = useMouse()
           <span>Y {{ y }}</span>
         </div>
       </li>
+      <li>State management with Pinia</li>
     </ul>
   </div>
 </template>

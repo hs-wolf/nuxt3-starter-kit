@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
   ],
   eslint: {
     config: {
