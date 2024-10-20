@@ -1,0 +1,49 @@
+name: Create Docker Image & Manage Infrastructure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    - name: Build Docker Image
+      run: docker build -t us-east1-docker.pkg.dev/shared-419123/nuxt3-starter-kit/container .
+
+    - name: Push Docker Image
+      run: docker push us-east1-docker.pkg.dev/shared-419123/nuxt3-starter-kit/container
+
+  terraform:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: <1.13.0
+
+    - name: Initialize Terraform
+      run: terraform init
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve

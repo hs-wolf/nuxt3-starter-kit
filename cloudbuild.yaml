@@ -1,0 +1,23 @@
+# SUBMIT OPTIONS
+options:
+  logging: CLOUD_LOGGING_ONLY
+  dynamic_substitutions: true
+  substitution_option: ALLOW_LOOSE
+
+# VARIABLES USED DURING BUILD
+substitutions:
+  _REGION: us-east1
+  _REPOSITORY: nuxt3-starter-kit
+  _CONTAINER: container
+
+# BUILD STEPS
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -t, '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_CONTAINER}', .]
+
+  - name: gcr.io/cloud-builders/docker
+    args: [push, '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_CONTAINER}']
+
+# IMAGES TO BE PUSHED INTO REGISTRY
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_CONTAINER}'

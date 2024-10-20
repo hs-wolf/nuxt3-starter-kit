@@ -10,7 +10,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "deploy:init": "terraform init",
+    "deploy:plan": "terraform plan",
+    "deploy:apply": "terraform apply"
   },
   "dependencies": {
     "@nuxt/icon": "^1.5.6",
