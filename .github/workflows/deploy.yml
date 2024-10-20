@@ -1,9 +1,15 @@
-name: Create Docker Image & Manage Infrastructure
+name: Build Container and Infrastructure
 
 on:
   push:
     branches:
       - main
+
+env:
+  project_id: shared-419123
+  project_region: us-east1
+  repo_name: nuxt3-starter-kit
+  container_name: container
 
 jobs:
   build:
@@ -21,11 +27,18 @@ jobs:
     - name: Google Cloud SDK Setup
       uses: 'google-github-actions/setup-gcloud@v1'
 
+    - name: "Use gcloud CLI"
+      run: "gcloud info"
+
+    - name: "Docker auth"
+      run: |-
+        gcloud auth configure-docker ${{ env.project_region }}-docker.pkg.dev --quiet
+
     - name: Build Docker Image
-      run: docker build -t us-east1-docker.pkg.dev/shared-419123/nuxt3-starter-kit/container .
+      run: docker build -t ${{ env.project_region }}-docker.pkg.dev/${{ env.project_id }}/${{ env.repo_name }}/${{ env.container_name }} .
 
     - name: Push Docker Image
-      run: docker push us-east1-docker.pkg.dev/shared-419123/nuxt3-starter-kit/container
+      run: docker push ${{ env.project_region }}-docker.pkg.dev/${{ env.project_id }}/${{ env.repo_name }}/${{ env.container_name }}
 
   terraform:
     needs: [build]
