@@ -18,6 +18,9 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT }}
 
+    - name: Google Cloud SDK Setup
+      uses: 'google-github-actions/setup-gcloud@v1'
+
     - name: Build Docker Image
       run: docker build -t us-east1-docker.pkg.dev/shared-419123/nuxt3-starter-kit/container .
 
